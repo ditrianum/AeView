@@ -1,0 +1,2 @@
+ChartLineSeries1.SeriesColor := $003A50E2 (red)
+ChartLineSeries1.SeriesColor := $00AF6257 (blue)

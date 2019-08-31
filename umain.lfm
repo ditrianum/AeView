@@ -1,0 +1,245 @@
+object frmMain: TfrmMain
+  Left = 304
+  Height = 576
+  Top = 133
+  Width = 960
+  Caption = 'Atmospheric Electricity Viewer 1.0'
+  ClientHeight = 576
+  ClientWidth = 960
+  Color = 15066597
+  OnCreate = FormCreate
+  LCLVersion = '2.0.4.0'
+  object btClose: TButton
+    Left = 856
+    Height = 25
+    Top = 539
+    Width = 90
+    Anchors = [akRight, akBottom]
+    Caption = 'Close'
+    OnClick = btCloseClick
+    TabOrder = 4
+  end
+  object btRefresh: TButton
+    Left = 456
+    Height = 25
+    Top = 539
+    Width = 90
+    Anchors = [akRight, akBottom]
+    Caption = 'Refresh'
+    OnClick = btRefreshClick
+    TabOrder = 0
+  end
+  object btSettings: TButton
+    Left = 760
+    Height = 25
+    Top = 539
+    Width = 90
+    Anchors = [akRight, akBottom]
+    Caption = 'Settings...'
+    OnClick = btSettingsClick
+    TabOrder = 3
+  end
+  object btScreenshot: TButton
+    Left = 552
+    Height = 25
+    Top = 539
+    Width = 106
+    Anchors = [akRight, akBottom]
+    Caption = 'Screenshot...'
+    OnClick = btScreenshotClick
+    TabOrder = 1
+  end
+  object lbSourceName: TLabel
+    Left = 520
+    Height = 28
+    Top = 507
+    Width = 426
+    Alignment = taRightJustify
+    Anchors = [akRight, akBottom]
+    AutoSize = False
+    Caption = 'source: Ditrianum (ditrianum.org)'
+    Font.Color = 5131854
+    ParentColor = False
+    ParentFont = False
+  end
+  object Chart1: TChart
+    Left = 8
+    Height = 499
+    Top = 8
+    Width = 938
+    AntialiasingMode = amOn
+    AxisList = <    
+      item
+        Grid.Color = clWhite
+        Grid.Style = psSolid
+        TickColor = clGray
+        AxisPen.Color = clGray
+        Marks.LabelFont.Color = 5131854
+        Marks.Frame.Color = clGray
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Color = 5131854
+        Title.LabelFont.Orientation = 900
+        Title.Visible = True
+        Title.Caption = 'Atmospheric signal (mV)'
+        Title.Frame.Color = clGray
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Grid.Color = clWhite
+        Grid.Style = psSolid
+        TickColor = clGray
+        Alignment = calBottom
+        AxisPen.Color = clGray
+        Marks.Alignment = taCenter
+        Marks.LabelFont.Color = 5131854
+        Marks.Format = '%2:s'
+        Marks.Frame.Color = clGray
+        Marks.LabelBrush.Style = bsClear
+        Marks.Source = DateTimeIntervalChartSource1
+        Marks.Style = smsLabel
+        Minors = <>
+        Title.Alignment = taCenter
+        Title.LabelFont.Color = 5131854
+        Title.Visible = True
+        Title.Caption = 'Time (UTC)'
+        Title.Frame.Color = clGray
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = 15066597
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Frame.Color = clGray
+    Title.Brush.Color = 15263976
+    Title.Font.Color = 7171437
+    Title.Font.Height = -16
+    Title.Font.Name = 'Sans'
+    Title.Font.Style = [fsBold]
+    Title.Frame.Color = clMedGray
+    Title.Text.Strings = (
+      ''
+    )
+    Title.Visible = True
+    Toolset = ChartToolset1
+    OnExtentChanged = Chart1ExtentChanged
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.InnerBorder = 5
+    Color = 15066597
+    object Chart1LineSeries1: TLineSeries
+      LinePen.Color = 11493975
+      LinePen.Style = psinsideFrame
+    end
+    object Chart1ConstantLine1383: TConstantLine
+      Pen.Color = 11513775
+      Position = 1383
+    end
+    object Chart1ConstantLine1388: TConstantLine
+      Pen.Color = 10736547
+      Position = 1388
+    end
+    object Chart1ConstantLine1393: TConstantLine
+      Pen.Color = 11513775
+      Position = 1393
+    end
+    object Chart1ConstantLine1398: TConstantLine
+      Pen.Color = 10736547
+      Position = 1398
+    end
+    object Chart1ConstantLine1403: TConstantLine
+      Pen.Color = 11513775
+      Position = 1403
+    end
+    object Chart1ConstantLine1408: TConstantLine
+      Pen.Color = 10736547
+      Pen.Width = 2
+      Position = 1408
+    end
+    object Chart1ConstantLine1413: TConstantLine
+      Pen.Color = 11513775
+      Position = 1413
+    end
+    object Chart1ConstantLine1417: TConstantLine
+      Pen.Color = 11513775
+      Position = 1417
+    end
+    object Chart1ConstantLine1422: TConstantLine
+      Pen.Color = 10736547
+      Position = 1422
+    end
+    object Chart1ConstantLine1427: TConstantLine
+      Pen.Color = 11513775
+      Position = 1427
+    end
+    object Chart1ConstantLine1432: TConstantLine
+      Pen.Color = 10736547
+      Position = 1432
+    end
+  end
+  object lbSelectedTime: TLabel
+    Left = 72
+    Height = 28
+    Top = 507
+    Width = 80
+    Anchors = [akLeft, akBottom]
+    AutoSize = False
+    Caption = 'Time range:'
+    Font.Color = 5131854
+    ParentColor = False
+    ParentFont = False
+  end
+  object lbSelectedTimeValue: TLabel
+    Left = 152
+    Height = 28
+    Top = 507
+    Width = 360
+    Anchors = [akLeft, akBottom]
+    AutoSize = False
+    Caption = 'lbSelectedTimeValue'
+    Font.Color = 5131854
+    ParentColor = False
+    ParentFont = False
+  end
+  object btSelectTime: TButton
+    Left = 664
+    Height = 25
+    Top = 539
+    Width = 90
+    Anchors = [akRight, akBottom]
+    Caption = 'Time...'
+    OnClick = btSelectTimeClick
+    TabOrder = 2
+  end
+  object DateTimeIntervalChartSource1: TDateTimeIntervalChartSource
+    Params.Count = 20
+    Params.MaxLength = 150
+    Params.MinLength = 20
+    Params.Tolerance = 1
+    Steps = [dtsYear, dtsMonth, dtsDay, dtsHour, dtsMinute]
+    left = 48
+  end
+  object ChartToolset1: TChartToolset
+    left = 8
+    object ChartToolset1PanDragTool1: TPanDragTool
+      Shift = [ssCtrl, ssLeft]
+      ActiveCursor = crDefault
+      EscapeCancels = True
+    end
+    object ChartZoomInWheel: TZoomMouseWheelTool
+      ZoomFactor = 2
+      ZoomRatio = 0.5
+    end
+    object ChartZoomOutWheel: TZoomMouseWheelTool
+      ZoomFactor = 0.5
+      ZoomRatio = 2
+    end
+    object ChartToolset1ZoomDragTool1: TZoomDragTool
+      Shift = [ssLeft]
+      Brush.Style = bsClear
+      EscapeCancels = True
+      RestoreExtentOn = [zreDragTopLeft, zreDragTopRight]
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    left = 88
+  end
+end

@@ -1,0 +1,190 @@
+object frmSettings: TfrmSettings
+  Left = 470
+  Height = 280
+  Top = 247
+  Width = 556
+  BorderStyle = bsDialog
+  Caption = 'Settings'
+  ClientHeight = 280
+  ClientWidth = 556
+  FormStyle = fsStayOnTop
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.4.0'
+  object lbStationID: TLabel
+    Left = 16
+    Height = 15
+    Top = 18
+    Width = 65
+    Caption = 'Station ID:'
+    ParentColor = False
+  end
+  object edStationID: TEdit
+    Left = 104
+    Height = 22
+    Top = 16
+    Width = 438
+    TabOrder = 0
+  end
+  object btOK: TButton
+    Left = 384
+    Height = 25
+    Top = 240
+    Width = 75
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 8
+  end
+  object btCancel: TButton
+    Left = 467
+    Height = 25
+    Top = 240
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 9
+  end
+  object lbLineColor: TLabel
+    Left = 16
+    Height = 15
+    Top = 98
+    Width = 63
+    Caption = 'Line color:'
+    ParentColor = False
+  end
+  object edLineColor: TEdit
+    Left = 104
+    Height = 22
+    Top = 96
+    Width = 120
+    TabOrder = 2
+    Text = 'edLineColor'
+  end
+  object btChooseLineColor: TButton
+    Left = 232
+    Height = 22
+    Top = 96
+    Width = 24
+    Caption = '...'
+    OnClick = btChooseLineColorClick
+    TabOrder = 3
+  end
+  object lbSourceID: TLabel
+    Left = 16
+    Height = 15
+    Top = 58
+    Width = 62
+    Caption = 'Source ID:'
+    ParentColor = False
+  end
+  object edSourceID: TEdit
+    Left = 104
+    Height = 22
+    Top = 56
+    Width = 438
+    TabOrder = 1
+    Text = 'source: Ditrianum (https://ditrianum.org)'
+  end
+  object lbScreenshotInfo: TLabel
+    Left = 16
+    Height = 40
+    Top = 136
+    Width = 526
+    AutoSize = False
+    Caption = 'The default screenshot area can be adjusted to precisely match the client area of your window. Use small values like 5 or -10.'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lbScreenshotLeft: TLabel
+    Left = 16
+    Height = 15
+    Top = 186
+    Width = 28
+    Caption = 'Left:'
+    ParentColor = False
+  end
+  object edScreenshotLeft: TEdit
+    Left = 56
+    Height = 22
+    Top = 184
+    Width = 40
+    TabOrder = 4
+    Text = '0'
+  end
+  object lbScreenshotTop: TLabel
+    Left = 144
+    Height = 15
+    Top = 186
+    Width = 28
+    Caption = 'Top:'
+    ParentColor = False
+  end
+  object edScreenshotTop: TEdit
+    Left = 192
+    Height = 22
+    Top = 184
+    Width = 40
+    TabOrder = 5
+    Text = '0'
+  end
+  object lbScreenshotWidth: TLabel
+    Left = 280
+    Height = 15
+    Top = 186
+    Width = 42
+    Caption = 'Width:'
+    ParentColor = False
+  end
+  object edScreenshotWidth: TEdit
+    Left = 344
+    Height = 22
+    Top = 184
+    Width = 40
+    TabOrder = 6
+    Text = '0'
+  end
+  object lbScreenshotHeight: TLabel
+    Left = 440
+    Height = 15
+    Top = 186
+    Width = 41
+    Caption = 'Height'
+    ParentColor = False
+  end
+  object edScreenshotHeight: TEdit
+    Left = 502
+    Height = 22
+    Top = 184
+    Width = 40
+    TabOrder = 7
+    Text = '0'
+  end
+  object ColorDialog1: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    left = 408
+    top = 88
+  end
+end
