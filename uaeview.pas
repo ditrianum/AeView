@@ -95,30 +95,35 @@ begin
   result := ArchiveFolder + DirectorySeparator + aFile;
 end;
 
-function NextDataFile(var aFile: string): boolean;
+function IncDataFile(const aFile: string; const increment: integer = 1): string;
 var
   y, m: word;
   dt: TDateTime;
+begin
+  result := RightStr(aFile, 11);
+  y := StrToInt(LeftStr(result, 4));
+  m := StrToInt(MidStr(result, 6, 2));
+  dt := IncMonth(EncodeDate(y, m, 1), increment);
+  result := FileID(dt);
+end;
+
+function NextDataFile(var aFile: string): boolean;
+var
   cFile: string;
 begin
   result := false;
   cFile := RightStr(aFile, 21);
 
   repeat
-    if cFile <> LiveTimeFile then
+    cFile := IncDataFile(cFile);
+    if cFile < LiveTimeFile then
       aFile := ArchivedFile(cFile)
+    else if cFile = LiveTimeFile then
+      aFile := cFile
     else
-      aFile := cFile;
+      break;
     result := FileExists(aFile);
-    if not result then
-      begin
-        cFile := RightStr(aFile, 11);
-        y := StrToInt(LeftStr(cFile, 4));
-        m := StrToInt(MidStr(cFile, 6, 2));
-        dt := IncMonth(EncodeDate(y, m, 1));
-        cFile := FileID(dt);
-      end;
-  until ((result = true) or (cFile > LiveTimeFile));
+  until (result = true);
 end;
 
 function ReadDataFile(aFile: string): boolean;
@@ -343,7 +348,6 @@ var
 begin
   ResetDataCount;
 
-  // update live time if applicable
   if SelectedTime.TimeFrame < 3 then
     UpdateLiveTime;
 
@@ -356,7 +360,6 @@ begin
   LiveTimeFile := FileID(LiveTime);
   cFile := FileID(SelectedTime.StartTime);
 
-  // Is the first file also the current file?
   if cFile = LiveTimeFile then
     begin
       if FileExists(cFile) then
@@ -364,8 +367,7 @@ begin
       exit;
     end;
 
-  // scan archive
-  aFile := cFile;
+  aFile := IncDataFile(cFile, -1);
 
   repeat
     continue := NextDataFile(aFile);
