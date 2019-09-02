@@ -119,8 +119,6 @@ begin
   // last 24 hours LiveTime
   SelectedTime.TimeFrame := 1;
 
-  //ConvertToUTC;
-
   LoadData();
   LoadChart();
 end;
@@ -269,7 +267,13 @@ begin
   Chart1LineSeries1.SeriesColor := Settings.LineColor;
 
   for i := 0 to DataCount do
-    Chart1LineSeries1.AddXY(AeData[i].Serial, AeData[i].Voltage);
+    begin
+      Chart1LineSeries1.AddXY(AeData[i].Serial, AeData[i].Voltage);
+      // prevent double memory usage
+      AeData[i] := Default(TAeData);
+    end;
+
+  ResetDataCount;
 
   Chart1.Title.Text.AddText(Settings.StationID);
   lbSourceName.Caption := Settings.SourceID;

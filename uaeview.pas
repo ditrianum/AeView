@@ -33,7 +33,7 @@ const
   // DefaultLineColor = $00AF6257; // blue
   DefaultLineColor = $003A50E2; // red
   ArchiveFolder = 'archive';
-  kMaxLines = 999999;
+  kMaxLines = 1319999;
 
 type
   TAeData = record
@@ -76,16 +76,15 @@ var
 function FileID(dt: TDateTime): string;
 function GetAeData(const data: string): TAeData;
 procedure GetPredefinedTime(const index: integer; var stime, etime: TDateTime);
-function GetScreenshot(): TBitmap;
+function GetScreenshot: TBitmap;
 function LiveTime(days: word = 0): TDateTime;
-procedure LoadData();
-procedure LoadSettings();
-procedure SaveAsJPEG();
-function SaveSettings(): boolean;
-function TimeStamp(): string;
+procedure LoadData;
+procedure LoadSettings;
+procedure ResetDataCount;
+procedure SaveAsJPEG;
+function SaveSettings: boolean;
+function TimeStamp: string;
 procedure UpdateLiveTime;
-
-procedure ConvertToUTC;
 
 implementation
 
@@ -263,11 +262,6 @@ begin
   Settings.ScreenshotHeight := StrToInt(buffer);
 end;
 
-procedure ResetDataCount;
-begin
-  DataCount := -1;
-end;
-
 procedure WriteSettings(var tf: TextFile);
 begin
   //writeln(tf, Settings.DataSource);
@@ -304,11 +298,11 @@ begin
   result.Value := value;
 
   try
-		result.Voltage := StrToFloat(value);
-	except
-		exit;
-	end;
-	
+    result.Voltage := StrToFloat(value);
+  except
+    exit;
+  end;
+
   result.Date := LeftStr(data, 10);
   result.Time := MidStr(data, 12, 8);
 
@@ -505,6 +499,11 @@ begin
   end;
 end;
 
+procedure ResetDataCount;
+begin
+  DataCount := -1;
+end;
+
 procedure SaveAsJPEG();
 var
   pic: TPicture;
@@ -566,37 +565,6 @@ begin
     begin
       GetPredefinedTime(TimeFrame, StartTime, EndTime);
     end;
-end;
-
-procedure ConvertToUTC;
-var
-  tfin, tfout: TextFile;
-  buffer: string;
-  inFile, outFile: string;
-  data: TAeData;
-begin
-  inFile := 'aelog-utc-2019-08.csv';
-  outFile := 'corrected-aelog-utc-2019-08.csv';
-
-  AssignFile(tfin, inFile);
-  AssignFile(tfout, outFile);
-
-  Reset(tfin);
-  Rewrite(tfout);
-
-  while not eof(tfin) do
-    begin
-      readln(tfin, buffer);
-      data := GetAeData(buffer);
-      data.Serial := IncHour(data.Serial, -2);
-      buffer := FormatDateTime('YYYY-MM-DD hh:nn:ss', data.Serial)
-        + ','
-        + data.Value;
-      writeln(tfout, buffer);
-    end;
-
-  CloseFile(tfin);
-  CloseFile(tfout);
 end;
 
 end.
