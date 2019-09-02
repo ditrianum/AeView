@@ -42,6 +42,7 @@ type
     Serial: TDatetime;
     Value: string;
     Voltage: extended;
+    IsValid: boolean;
   end;
 
   TSelectedTime = record
@@ -127,16 +128,24 @@ begin
 end;
 
 function ReadDataFile(aFile: string): boolean;
-// returns false if an error occurred or no (more) matching dates were found
+{ 
+	returns false if an error occurred
+	or no (more) matching dates were found
+}
 var
   tfin: TextFile;
   buffer: string;
   tmpAeData: TAeData;
+  tmpAeDataBefore: TAeData;
   vr: TValueRelationship;
+  lines: longword;
 begin
   result := false;
   if aFile <> LiveTimeFile then
     result := true;
+
+  lines := 0;
+  tmpAeDataBefore := default(TAeData);
 
   AssignFile(tfin, aFile);
   try
@@ -146,9 +155,35 @@ begin
         while not eof(tfin) do
           begin
             readln(tfin, buffer);
+            inc(lines);
             if Length(Trim(buffer)) > 0 then
               begin
                 tmpAeData := GetAeData(buffer);
+                // check data valifity
+                if not tmpAeData.IsValid then
+                  begin
+                    buffer := 'Warning, invalid data found in '
+                      + aFile
+                      + ' at line '
+                      + IntToStr(lines);
+                    ShowMessage(buffer);
+                    result := false;
+                    break;
+                  end;
+                // check date/time overlap, but skip equal date/time if nan
+                vr := CompareDateTime(tmpAeDataBefore.Serial, tmpAeData.Serial);
+                if (vr > 0) or ((vr = 0) and (IsNan(tmpAeData.Voltage) = false)) then
+                  begin
+                    buffer := 'Warning, date/time overlap in '
+                      + aFile
+                      + ' at line '
+                      + IntToStr(lines);
+                    ShowMessage(buffer);
+                    result := false;
+                    break;
+                  end;
+                tmpAeDataBefore := tmpAeData;
+                // check date/time match
                 vr := CompareDateTime(tmpAeData.Serial, SelectedTime.StartTime);
                 if vr >= 0 then
                   begin
@@ -164,6 +199,8 @@ begin
                     if DataCount = kMaxLines then
                       // reached maximum
                       begin
+                        buffer := 'Warning, reached data limit. Loading file(s) aborted.';
+                        ShowMessage(buffer);
                         result := false;
                         break;
                       end;
@@ -253,19 +290,25 @@ begin
 end;
 
 function GetAeData(const data: string): TAeData;
-// Assumes a valid data string
 var
   y,m,d,h,n,s: word;
   value: string;
 begin
   result := Default(TAeData);
+  result.IsValid := false; // assume
 
   value := Trim(MidStr(data, 21, 12));
   if Length(value) = 0 then
     value := 'Nan';
 
   result.Value := value;
-  result.Voltage := StrToFloat(value);
+
+  try
+		result.Voltage := StrToFloat(value);
+	except
+		exit;
+	end;
+	
   result.Date := LeftStr(data, 10);
   result.Time := MidStr(data, 12, 8);
 
@@ -276,7 +319,17 @@ begin
   n := StrToInt(MidStr(result.Time, 4, 2));
   s := StrToInt(MidStr(result.Time, 7, 2));
 
+  if y < YearOf(Epoch) then
+    exit;
+
+  if not IsValidDate(y, m, d) then
+    exit;
+
+  if not IsValidTime(h, n, s, 0) then
+    exit;
+
   result.Serial := EncodeDateTime(y, m, d, h, n, s, 0);
+  result.IsValid := true;
 end;
 
 procedure GetPredefinedTime(const index: integer; var stime, etime: TDateTime);
