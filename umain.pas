@@ -116,7 +116,7 @@ begin
   //Chart1ConstantLine1427.Active := true;
   //Chart1ConstantLine1432.Active := true;
 
-  // last 24 hours LiveTime
+  // last 7 days LiveTime
   SelectedTime.TimeFrame := 1;
 
   LoadData();
