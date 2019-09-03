@@ -102,19 +102,19 @@ begin
   {
     If the recorded data show obvious 4 and 5-step millivolt levels then the
     following constant lines can be used to mark them, but their position
-    may be different depending on the recording device.
+    may be different depending on the recording device and conditions.
   }
-  //Chart1ConstantLine1383.Active := false;
-  //Chart1ConstantLine1388.Active := false;
-  //Chart1ConstantLine1393.Active := false;
-  //Chart1ConstantLine1398.Active := false;
-  //Chart1ConstantLine1403.Active := false;
-  //Chart1ConstantLine1408.Active := false;
-  //Chart1ConstantLine1413.Active := false;
-  //Chart1ConstantLine1417.Active := false;
-  //Chart1ConstantLine1422.Active := false;
-  //Chart1ConstantLine1427.Active := false;
-  //Chart1ConstantLine1432.Active := false;
+  //Chart1ConstantLine1383.Active := true;
+  //Chart1ConstantLine1388.Active := true;
+  //Chart1ConstantLine1393.Active := true;
+  //Chart1ConstantLine1398.Active := true;
+  //Chart1ConstantLine1403.Active := true;
+  //Chart1ConstantLine1408.Active := true;
+  //Chart1ConstantLine1413.Active := true;
+  //Chart1ConstantLine1417.Active := true;
+  //Chart1ConstantLine1422.Active := true;
+  //Chart1ConstantLine1427.Active := true;
+  //Chart1ConstantLine1432.Active := true;
 
   // last 24 hours LiveTime
   SelectedTime.TimeFrame := 1;

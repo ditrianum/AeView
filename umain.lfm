@@ -130,47 +130,58 @@ object frmMain: TfrmMain
       LinePen.Style = psinsideFrame
     end
     object Chart1ConstantLine1383: TConstantLine
+      Active = False
       Pen.Color = 11513775
       Position = 1383
     end
     object Chart1ConstantLine1388: TConstantLine
+      Active = False
       Pen.Color = 10736547
       Position = 1388
     end
     object Chart1ConstantLine1393: TConstantLine
+      Active = False
       Pen.Color = 11513775
       Position = 1393
     end
     object Chart1ConstantLine1398: TConstantLine
+      Active = False
       Pen.Color = 10736547
       Position = 1398
     end
     object Chart1ConstantLine1403: TConstantLine
+      Active = False
       Pen.Color = 11513775
       Position = 1403
     end
     object Chart1ConstantLine1408: TConstantLine
+      Active = False
       Pen.Color = 10736547
       Pen.Width = 2
       Position = 1408
     end
     object Chart1ConstantLine1413: TConstantLine
-      Pen.Color = 11513775
+      Active = False
+      Pen.Color = 2664656
       Position = 1413
     end
     object Chart1ConstantLine1417: TConstantLine
+      Active = False
       Pen.Color = 11513775
       Position = 1417
     end
     object Chart1ConstantLine1422: TConstantLine
+      Active = False
       Pen.Color = 10736547
       Position = 1422
     end
     object Chart1ConstantLine1427: TConstantLine
+      Active = False
       Pen.Color = 11513775
       Position = 1427
     end
     object Chart1ConstantLine1432: TConstantLine
+      Active = False
       Pen.Color = 10736547
       Position = 1432
     end
