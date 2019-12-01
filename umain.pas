@@ -41,6 +41,13 @@ type
     btScreenshot: TButton;
     btSelectTime: TButton;
     Chart1: TChart;
+    Chart1ConstantLine1471: TConstantLine;
+    Chart1ConstantLine1461: TConstantLine;
+    Chart1ConstantLine1457: TConstantLine;
+    Chart1ConstantLine1452: TConstantLine;
+    Chart1ConstantLine1447: TConstantLine;
+    Chart1ConstantLine1378: TConstantLine;
+    Chart1ConstantLine1437: TConstantLine;
     Chart1ConstantLine1383: TConstantLine;
     Chart1ConstantLine1432: TConstantLine;
     Chart1ConstantLine1388: TConstantLine;
@@ -52,6 +59,8 @@ type
     Chart1ConstantLine1408: TConstantLine;
     Chart1ConstantLine1413: TConstantLine;
     Chart1ConstantLine1417: TConstantLine;
+    Chart1ConstantLine1442: TConstantLine;
+    Chart1ConstantLine1466: TConstantLine;
     Chart1LineSeries1: TLineSeries;
     ChartToolset1: TChartToolset;
     ChartToolset1PanDragTool1: TPanDragTool;
@@ -104,17 +113,28 @@ begin
     following constant lines can be used to mark them, but their position
     may be different depending on the recording device and conditions.
   }
-  //Chart1ConstantLine1383.Active := true;
-  //Chart1ConstantLine1388.Active := true;
-  //Chart1ConstantLine1393.Active := true;
-  //Chart1ConstantLine1398.Active := true;
-  //Chart1ConstantLine1403.Active := true;
-  //Chart1ConstantLine1408.Active := true;
-  //Chart1ConstantLine1413.Active := true;
-  //Chart1ConstantLine1417.Active := true;
-  //Chart1ConstantLine1422.Active := true;
-  //Chart1ConstantLine1427.Active := true;
-  //Chart1ConstantLine1432.Active := true;
+  {
+  Chart1ConstantLine1378.Active := true;
+  Chart1ConstantLine1383.Active := true;
+  Chart1ConstantLine1388.Active := true;
+  Chart1ConstantLine1393.Active := true;
+  Chart1ConstantLine1398.Active := true;
+  Chart1ConstantLine1403.Active := true;
+  Chart1ConstantLine1408.Active := true;
+  Chart1ConstantLine1413.Active := true;
+  Chart1ConstantLine1417.Active := true;
+  Chart1ConstantLine1422.Active := true;
+  Chart1ConstantLine1427.Active := true;
+  Chart1ConstantLine1432.Active := true;
+  Chart1ConstantLine1437.Active := true;
+  Chart1ConstantLine1442.Active := true;
+  Chart1ConstantLine1447.Active := true;
+  Chart1ConstantLine1452.Active := true;
+  Chart1ConstantLine1457.Active := true;
+  Chart1ConstantLine1461.Active := true;
+  Chart1ConstantLine1466.Active := true;
+  Chart1ConstantLine1471.Active := true;
+  }
 
   // last 7 days LiveTime
   SelectedTime.TimeFrame := 1;
@@ -199,12 +219,8 @@ end;
 procedure TfrmMain.btSettingsClick(Sender: TObject);
 var
   f: TfrmSettings;
-  //s: string;
-  //reload: boolean;
 begin
-  //reload := false;
   f := TfrmSettings.Create(frmMain);
-  //f.edDataSource.Text := Settings.DataSource;
   f.edStationID.Text := Settings.StationID;
   f.edSourceID.Text := Settings.SourceID;
   f.edLineColor.Text := ColorToString(Settings.LineColor);
@@ -214,12 +230,6 @@ begin
   f.edScreenshotHeight.Text := IntToStr(Settings.ScreenshotHeight);
   if f.ShowModal = mrOK then
     begin
-      //s := trim(f.edDataSource.Text);
-      //if s <> Settings.DataSource then
-      //  begin
-      //    Settings.DataSource := s;
-      //    reload := true;
-      //  end;
       Settings.StationID := trim(f.edStationID.Text);
       Settings.SourceID := trim(f.edSourceID.Text);
       Settings.LineColor := StringToColor(f.edLineColor.Text);
@@ -229,11 +239,8 @@ begin
       Settings.ScreenshotHeight := StrToInt(f.edScreenshotHeight.Text);
       if SaveSettings() then
         begin
-          // (re)load
-          // if reload then
-            // LoadFile();
+          LoadData();
           LoadChart();
-          Chart1.Refresh;
         end;
     end;
   f.Free;

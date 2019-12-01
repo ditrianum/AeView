@@ -30,8 +30,7 @@ uses
   LCLIntf, LCLType, Math;
 
 const
-  // DefaultLineColor = $00AF6257; // blue
-  DefaultLineColor = $003A50E2; // red
+  DefaultLineColor = $00FF9F2F;
   ArchiveFolder = 'archive';
   kMaxLines = 1319999;
 
@@ -218,7 +217,7 @@ begin
       CloseFile(tfin);
     end;
   except
-    ShowMessage('Error opening data file.');
+    ShowMessage('Error opening data file ' + aFile);
     result := false;
   end;
 end;

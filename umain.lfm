@@ -74,6 +74,7 @@ object frmMain: TfrmMain
         Grid.Style = psSolid
         TickColor = clGray
         AxisPen.Color = clGray
+        Marks.Margins.Left = 6
         Marks.LabelFont.Color = 5131854
         Marks.Frame.Color = clGray
         Marks.LabelBrush.Style = bsClear
@@ -81,7 +82,7 @@ object frmMain: TfrmMain
         Title.LabelFont.Color = 5131854
         Title.LabelFont.Orientation = 900
         Title.Visible = True
-        Title.Caption = 'Atmospheric signal (mV)'
+        Title.Caption = 'mV'
         Title.Frame.Color = clGray
         Title.LabelBrush.Style = bsClear
       end    
@@ -110,6 +111,8 @@ object frmMain: TfrmMain
     Foot.Brush.Color = clBtnFace
     Foot.Font.Color = clBlue
     Frame.Color = clGray
+    Margins.Left = 6
+    MarginsExternal.Left = 6
     Title.Brush.Color = 15263976
     Title.Font.Color = 7171437
     Title.Font.Height = -16
@@ -129,61 +132,117 @@ object frmMain: TfrmMain
       LinePen.Color = 11493975
       LinePen.Style = psinsideFrame
     end
-    object Chart1ConstantLine1383: TConstantLine
+    object Chart1ConstantLine1378: TConstantLine
       Active = False
-      Pen.Color = 11513775
+      Pen.Color = 12961221
+      Position = 1378
+    end
+    object Chart1ConstantLine1383: TConstantLine
+      Legend.Visible = False
+      Active = False
+      Pen.Color = 12961221
       Position = 1383
     end
     object Chart1ConstantLine1388: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 10736547
+      Pen.Color = 12961221
       Position = 1388
     end
     object Chart1ConstantLine1393: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 11513775
+      Pen.Color = 12961221
       Position = 1393
     end
     object Chart1ConstantLine1398: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 10736547
+      Pen.Color = 12961221
       Position = 1398
     end
     object Chart1ConstantLine1403: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 11513775
+      Pen.Color = 12961221
       Position = 1403
     end
     object Chart1ConstantLine1408: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 10736547
-      Pen.Width = 2
+      Pen.Color = 12961221
       Position = 1408
     end
     object Chart1ConstantLine1413: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 2664656
+      Pen.Color = 8962773
       Position = 1413
     end
     object Chart1ConstantLine1417: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 11513775
+      Pen.Color = 12961221
       Position = 1417
     end
     object Chart1ConstantLine1422: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 10736547
+      Pen.Color = 12961221
       Position = 1422
     end
     object Chart1ConstantLine1427: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 11513775
+      Pen.Color = 12961221
       Position = 1427
     end
     object Chart1ConstantLine1432: TConstantLine
+      Legend.Visible = False
       Active = False
-      Pen.Color = 10736547
+      Pen.Color = 12961221
       Position = 1432
+    end
+    object Chart1ConstantLine1437: TConstantLine
+      Legend.Visible = False
+      Active = False
+      Pen.Color = 12961221
+      Position = 1437
+    end
+    object Chart1ConstantLine1442: TConstantLine
+      Active = False
+      Pen.Color = 12961221
+      Position = 1442
+    end
+    object Chart1ConstantLine1447: TConstantLine
+      Active = False
+      Pen.Color = 12961221
+      Position = 1447
+    end
+    object Chart1ConstantLine1452: TConstantLine
+      Active = False
+      Pen.Color = 12961221
+      Position = 1452
+    end
+    object Chart1ConstantLine1457: TConstantLine
+      Active = False
+      Pen.Color = 8962773
+      Position = 1457
+    end
+    object Chart1ConstantLine1461: TConstantLine
+      Active = False
+      Pen.Color = 12961221
+      Position = 1461
+    end
+    object Chart1ConstantLine1466: TConstantLine
+      Active = False
+      Pen.Color = 12961221
+      Position = 1466
+    end
+    object Chart1ConstantLine1471: TConstantLine
+      Active = False
+      Pen.Color = 12961221
+      Position = 1471
     end
   end
   object lbSelectedTime: TLabel
